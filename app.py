@@ -38,7 +38,15 @@ def search_by_image(query_emb, embeddings, top_k=5):
 # Load dataset + embeddings
 # -------------------------
 df = pd.read_csv("data/products.csv")
-image_embeddings = np.load("models/image_embeddings.npy")
+
+# importing from huggingface_hub to download the embeddings
+from huggingface_hub import hf_hub_download
+
+embedding_path = hf_hub_download(
+    repo_id="Gantumur/image_to_image_embeddings",
+    filename="image_embeddings.npy"
+)
+image_embeddings = np.load(embedding_path)
 
 # -------------------------
 # Load the ZIP dataset from Hugging Face

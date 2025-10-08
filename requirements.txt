@@ -6,3 +6,4 @@ Pillow
 scikit-learn
 gradio
 requests
+huggingface_hub

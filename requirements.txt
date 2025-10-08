@@ -1,0 +1,8 @@
+torch
+transformers
+pandas
+numpy
+Pillow
+scikit-learn
+gradio
+requests

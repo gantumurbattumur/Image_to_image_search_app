@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import zipfile
 from io import BytesIO
 import requests
-
+from huggingface_hub import hf_hub_download
 # -------------------------
 # Load CLIP model
 # -------------------------
@@ -38,13 +38,10 @@ def search_by_image(query_emb, embeddings, top_k=5):
 # Load dataset + embeddings
 # -------------------------
 df = pd.read_csv("data/products.csv")
-
-# importing from huggingface_hub to download the embeddings
-from huggingface_hub import hf_hub_download
-
 embedding_path = hf_hub_download(
     repo_id="Gantumur/image_to_image_embeddings",
-    filename="image_embeddings.npy"
+    filename="image_embeddings.npy",
+    repo_type="dataset"
 )
 image_embeddings = np.load(embedding_path)
 
